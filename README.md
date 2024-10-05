@@ -47,7 +47,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 https://newsdata.io/api/1/latest?apikey=pub_5535960bbd07cc4fa76d59bd5b32cda638ea8&category=top&&langauge=en
 
-{ name: "Albanian", code: "sq" },
+    { name: "Albanian", code: "sq" },
     { name: "Amharic", code: "am" },
     { name: "Arabic", code: "ar" },
     { name: "Armenian", code: "hy" },
