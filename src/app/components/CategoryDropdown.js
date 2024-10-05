@@ -11,7 +11,7 @@ const CategoryDropdown = ({ selectedCategory, handleCategoryChange }) => {
       <Select
         labelId="category-dropdown-label"
         id="category-dropdown"
-        value={selectedCategory}
+        value={selectedCategory} 
         onChange={handleCategoryChange}
         label="Select Category"
       >
