@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import languagesData from './languages.json'; // Assuming your languages JSON file is named languages.json

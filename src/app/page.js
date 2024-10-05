@@ -27,13 +27,14 @@ export default function Page() {
   };
 
   return (
-    <>
+    <Box  sx={{
+      marginLeft: "2rem",
+    }}>
       <Box
         sx={{
           marginTop: "2rem",
           gap: "2rem",
           display: "flex",
-          marginLeft: "2rem",
           flexDirection: "row",
         }}
       >
@@ -55,6 +56,6 @@ export default function Page() {
         selectedCategory={selectedCategory}
         selectedLanguage={selectedLanguage}
       />{" "}
-    </>
+    </Box>
   );
 }

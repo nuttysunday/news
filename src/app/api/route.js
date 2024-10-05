@@ -7,11 +7,17 @@ export async function GET(req) {
   console.log(category)
   const lang = searchParams.get('lang') || 'en';
   const country = searchParams.get('country');
-  console.log(country)
+  
   
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;;
-  const url = `https://newsdata.io/api/1/latest?apikey=${apiKey}&category=${category}&language=${lang}`;
+  let url = `https://newsdata.io/api/1/latest?apikey=${apiKey}&category=${category}&language=${lang}&removeduplicate=1`;
 
+  if (country && country !== 'Global') {
+   console.log(country);
+   url += `&country=${country}`;
+   console.log(url)
+  }
+ 
   // Revalidate information every two hours
   const response = await fetch(url, { next: { revalidate: 7200 } });
   
