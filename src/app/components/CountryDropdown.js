@@ -46,7 +46,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
     <FormControl
       fullWidth
       variant="outlined"
-      sx={{ marginBottom: "2rem", width: "15rem", borderRadius: "8px", boxShadow: 1 }}
+      sx={{ marginBottom: "2rem", width: "15rem", borderRadius: "8px" }}
     >
       <InputLabel id="country-dropdown-label">Select Country</InputLabel>
       <Select
@@ -56,7 +56,6 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
         onChange={handleCountryChange}
         label="Select Country"
         sx={{
-          backgroundColor: "#fff",
           "& .MuiSelect-select": {
             display: "flex",
             alignItems: "center",

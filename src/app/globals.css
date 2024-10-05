@@ -5,8 +5,12 @@
 body{
   margin: 0;
   padding: 0;
+  @apply bg-slate-700;
+  @apply text-slate-300
 }
 
 * {
   box-sizing: border-box;
 }
+
+

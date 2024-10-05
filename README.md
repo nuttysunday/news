@@ -134,3 +134,15 @@ https://newsdata.io/api/1/latest?apikey=pub_5535960bbd07cc4fa76d59bd5b32cda638ea
     { name: "Uzbek", code: "uz" },
 
 // cache the response of the API, so that request can be used smartly# news
+
+
+
+  <p class="text-sm leading-6">I’m Derek, an astro-engineer based in Tattooine. I like to build X-Wings at <a href="#" class="font-bold underline decoration-sky-500/30 decoration-2 dark:text-slate-200">My Company, Inc</a>. Outside of work, I like to <a href="#" class="font-bold underline decoration-pink-500/30 decoration-2 dark:text-slate-200">watch pod-racing</a> and have <a href="#" class="font-bold underline decoration-indigo-500/30 decoration-2 dark:text-slate-200">light-saber</a> fights.</p>
+<div style="background-position:10px 10px" class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
+
+
+<div class="bg-white p-8 text-slate-900 shadow-lg max-w-sm mx-auto text-sm leading-6 sm:text-base sm:leading-7 dark:bg-slate-800 dark:text-slate-400">
+  <p class="text-sm leading-6">I’m Derek, an astro-engineer based in Tattooine. I like to build X-Wings at <a href="#" class="font-bold underline decoration-sky-500 decoration-2 dark:text-slate-200">My Company, Inc</a>. Outside of work, I like to <a href="#" class="font-bold underline decoration-pink-500 decoration-2 dark:text-slate-200">watch pod-racing</a> and have <a href="#" class="font-bold underline decoration-indigo-500 decoration-2 dark:text-slate-200">light-saber</a> fights.</p>
+</div>
+
+<a href="#" class="font-bold underline decoration-sky-500 decoration-2 dark:text-slate-200">My Company, Inc</a>

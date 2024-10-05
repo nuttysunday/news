@@ -12,7 +12,7 @@ export default function Page() {
   // default values
   const [selectedValue, setSelectedValue] = useState("Global");
   const [selectedCategory, setSelectedCategory] = useState("world");
-  const [selectedLanguage, setSelectedLanguage] = useState("en"); // Default to English
+  const [selectedLanguage, setSelectedLanguage] = useState("en"); 
 
   const handleCountryChange = (event) => {
     setSelectedValue(event.target.value);
@@ -28,11 +28,11 @@ export default function Page() {
 
   return (
     <Box  sx={{
-      marginLeft: "2rem",
+       marginTop:'2rem',
+       marginLeft: '1rem'
     }}>
       <Box
         sx={{
-          marginTop: "2rem",
           gap: "2rem",
           display: "flex",
           flexDirection: "row",

@@ -1,6 +1,5 @@
 // src/app/components/NewsDisplay.js
-import React, { useEffect, useState } from 'react';
-import { Box, Typography, CircularProgress, Card, CardContent, CardMedia, Link } from '@mui/material';
+import React, { useEffect, useState } from "react";
 
 const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
   const [articles, setArticles] = useState([]);
@@ -11,9 +10,11 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`);
+        const response = await fetch(
+          `/api?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setArticles(data.data.results); // Adjust based on the structure of your API response
@@ -27,31 +28,51 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     fetchArticles();
   }, [selectedValue, selectedCategory, selectedLanguage]);
 
-  if (loading) return <CircularProgress />;
-  if (error) return <Typography color="error">Failed to load articles: {error.message}</Typography>;
+  if (loading)
+    return (
+      <div className="flex justify-center">
+        <div className="animate-spin h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+      </div>
+    ); // Tailwind loading spinner
+  if (error)
+    return (
+      <div className="text-red-500">
+        Failed to load articles: {error.message}
+      </div>
+    );
 
   return (
-    <Box sx={{ marginTop: '2rem' }}>
+    <div className="">
       {articles.map((article) => (
-        <Card key={article.article_id} sx={{ marginBottom: '1rem', display: 'flex' }}>
-          {article.image_url && (
-            <CardMedia
-              component="img"
-              sx={{ width: 151 }}
-              image={article.image_url}
+        <div key={article.article_id} className="rounded-lg p-2 py-1">
+          <div className="flex justify-between items-start mb-3">
+            <div className="flex-1 ">
+              <h2 className="font-bold font-mono text-yellow-300 text-lg">
+                {article.title}
+              </h2>
+              <p>
+              <a
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-pink-400 text-sm"
+              >
+                Read more
+              </a>
+              </p>
+            </div>
+            <img
+              className="w-20 h-20 object-cover object-center rounded-xl border-2 border-gray-300 ml-2"
+              src={
+                article.image_url ||
+                "https://img.theweek.in/content/dam/week/wire-updates/the-week-pti-wire-updates.jpg"
+              }
               alt={article.title}
             />
-          )}
-          <CardContent>
-            <Typography variant="h6">{article.title}</Typography>
-            <Typography variant="body2" color="text.secondary">{article.description || 'No description available.'}</Typography>
-            <Link href={article.link} target="_blank" rel="noopener">
-              Read more
-            </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       ))}
-    </Box>
+    </div>
   );
 };
 
