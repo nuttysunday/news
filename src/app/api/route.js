@@ -6,7 +6,7 @@ export async function GET(req) {
   const category = searchParams.get('category') || 'world';
   console.log(category)
   const lang = searchParams.get('lang') || 'en';
-  const country = searchParams.get('country');
+  const country = searchParams.get('country') || 'wo';
   
   
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;;

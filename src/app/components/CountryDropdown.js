@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Typography, Box } from "@mui/material";
 import countriesData from "./countries.json";
@@ -29,8 +31,8 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         const data = await response.json();
         setUserCountry(data.country_name);
         setUserCountryCode(data.country);
-        setSelectedValue("wo");
         console.log("selectedValue", selectedValue)
+        setSelectedValue("wo")
       } catch (error) {
         console.log(error);
       }
@@ -71,6 +73,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         value={selectedValue}
         onChange={handleCountryChange}
         label="Select Country"
+        MenuProps={{autoFocus: false}}
         sx={{
           "& .MuiSelect-select": {
             display: "flex",
@@ -79,6 +82,15 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         }}
       >
 
+        {/* World Option as the First Menu Item */}
+        <MenuItem value="wo">
+            <Box display="flex" alignItems="center">
+              <FlagIcon code={"wo"} />
+              <Typography variant="body1"  className="font-bold font-mono text-indigo-300 text-sm">World</Typography>
+            </Box>
+          </MenuItem>
+        
+         {/* User country as Option as the second Menu Item */}
         {userCountry && userCountryCode && (
           <MenuItem value={userCountryCode}>
             <Box display="flex" alignItems="center">

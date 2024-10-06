@@ -1,10 +1,10 @@
-// src/app/components/NewsDisplay.js
 import React, { useEffect, useState } from "react";
 
 const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [status, setStatus] = useState(null); // Track the API response status
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -17,7 +17,12 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setArticles(data.data.results); // Adjust based on the structure of your API response
+        setStatus(data.data.status); // Track status from API response
+        if (data.data.status === "success") {
+          setArticles(data.data.results); // Adjust based on the structure of your API response
+        } else {
+          throw new Error("Failed to fetch articles. Status: " + data.status);
+        }
       } catch (err) {
         setError(err);
       } finally {
@@ -34,6 +39,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
         <div className="animate-spin h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full"></div>
       </div>
     ); // Tailwind loading spinner
+
   if (error)
     return (
       <div className="text-red-500">
@@ -41,8 +47,17 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       </div>
     );
 
+  if (status !== "success") {
+    // Show a message if the status is not "success"
+    return (
+      <div className="text-yellow-500">
+        Unable to fetch articles. Please try again later.
+      </div>
+    );
+  }
+
   return (
-    <div className="">
+    <div>
       {articles.map((article) => (
         <div key={article.article_id} className="rounded-lg p-2 py-1">
           <div className="flex justify-between items-start mb-3">
@@ -51,14 +66,14 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
                 {article.title}
               </h2>
               <p>
-              <a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-pink-400 text-sm"
-              >
-                Read more
-              </a>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-pink-400 text-sm"
+                >
+                  Read more
+                </a>
               </p>
             </div>
             <img
