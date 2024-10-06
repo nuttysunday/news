@@ -11,17 +11,17 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `/api?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
+          `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log("showing the data out")
-        console.log(data)
-        setStatus(data.status); 
-        if (data.status === "success" && data.totalResults >= 1) {
-          setArticles(data.results); 
+        console.log("Printing the data out")
+        console.log(data.data)
+        setStatus(data.data.status); 
+        if (data.data.status === "success" && data.data.totalResults >= 1) {
+          setArticles(data.data.results); 
         } else {
           throw new Error("No News Found bro");
         }
