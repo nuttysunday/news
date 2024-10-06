@@ -31,7 +31,6 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         const data = await response.json();
         setUserCountry(data.country_name);
         setUserCountryCode(data.country);
-        setSelectedValue("wo");
         console.log("selectedValue", selectedValue)
       } catch (error) {
         console.log(error);

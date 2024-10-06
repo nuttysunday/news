@@ -42,7 +42,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     );
 
   return (
-    <div className="">
+    <div>
       {articles.map((article) => (
         <div key={article.article_id} className="rounded-lg p-2 py-1">
           <div className="flex justify-between items-start mb-3">
