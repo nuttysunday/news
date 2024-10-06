@@ -12,6 +12,7 @@ export async function GET(req) {
 
   if (country && country !== 'Global') {
    url += `&country=${country}`;
+   console.log(url)
   }
  
   // Revalidate information every two hours

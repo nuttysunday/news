@@ -19,7 +19,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
         const data = await response.json();
 
         setStatus(data.status); 
-        if (data.status === "success" && data.totalResults >= 1) {
+        if (data.status === "success") {
           setArticles(data.results); 
         } else {
           throw new Error("No News Found bro");
