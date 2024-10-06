@@ -71,6 +71,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         value={selectedValue}
         onChange={handleCountryChange}
         label="Select Country"
+        MenuProps={{autoFocus: false}}
         sx={{
           "& .MuiSelect-select": {
             display: "flex",
@@ -79,6 +80,15 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         }}
       >
 
+        {/* World Option as the First Menu Item */}
+        <MenuItem value="wo">
+          <Box display="flex" alignItems="center">
+            <FlagIcon code="wo" />
+            <Typography className="font-bold font-mono text-indigo-300 text-sm">World</Typography>
+          </Box>
+        </MenuItem>
+        
+         {/* User country as Option as the second Menu Item */}
         {userCountry && userCountryCode && (
           <MenuItem value={userCountryCode}>
             <Box display="flex" alignItems="center">
