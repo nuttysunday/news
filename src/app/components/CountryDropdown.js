@@ -4,12 +4,30 @@ import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Typography, Box } from "@mui/material";
 import countriesData from "./countries.json";
 
-// A simple flag icon component for demonstration purposes
-const FlagIcon = ({ code }) => (
-  <span style={{ marginRight: "8px" }}>
-    <img src={`https://flagcdn.com/${code.toLowerCase()}.svg`} alt={`${code} flag`} style={{ width: "20px", height: "15px" }} />
-  </span>
-);
+const FlagIcon = ({ code }) => {
+  const worldFlagImage = "https://images.squarespace-cdn.com/content/v1/5fa6b76b045ef433ae7b252e/1604765875569-MUAEJNXG2NL6E4VEORZ6/Flag_20x30.jpg"
+  if (code === "wo") {
+    return (
+      <span style={{ marginRight: "8px" }}>
+        <img
+          src={worldFlagImage}
+          alt="World flag"
+          style={{ width: "20px", height: "15px" }}
+        />
+      </span>
+    );
+  }
+
+  return (
+    <span style={{ marginRight: "8px" }}>
+      <img
+        src={`https://flagcdn.com/${code.toLowerCase()}.svg`}
+        alt={`${code} flag`}
+        style={{ width: "20px", height: "15px" }}
+      />
+    </span>
+  );
+};
 
 export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
   const [countries, setCountries] = useState([]);

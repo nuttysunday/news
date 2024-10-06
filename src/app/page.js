@@ -11,7 +11,7 @@ import ArticlesList from "./components/ArticlesList";
 export default function Page() {
   // default values
   const [selectedValue, setSelectedValue] = useState("Global");
-  const [selectedCategory, setSelectedCategory] = useState("world");
+  const [selectedCategory, setSelectedCategory] = useState("top");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); 
 
   const handleCountryChange = (event) => {
