@@ -10,8 +10,9 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
+        setArticles([]); 
         const response = await fetch(
-          `/api?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
+          `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -20,7 +21,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
         console.log("showing the data out")
         console.log(data)
         setStatus(data.status); 
-        if (data.status === "success" && data.totalResults >= 1) {
+        if (data.status === "success") {
           setArticles(data.results); 
         } else {
           throw new Error("No News Found bro");
