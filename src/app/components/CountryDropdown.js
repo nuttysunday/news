@@ -1,17 +1,22 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Typography, Box } from "@mui/material";
 import countriesData from "./countries.json";
 
-// A simple flag icon component for demonstration purposes
-const FlagIcon = ({ code }) => (
-  <span style={{ marginRight: "8px" }}>
-    <img src={`https://flagcdn.com/${code.toLowerCase()}.svg`} alt={`${code} flag`} style={{ width: "20px", height: "15px" }} />
-  </span>
-);
+const FlagIcon = ({ code }) => {
+  const worldFlagImage = "https://images.squarespace-cdn.com/content/v1/5fa6b76b045ef433ae7b252e/1604765875569-MUAEJNXG2NL6E4VEORZ6/Flag_20x30.jpg";
+  
+  return (
+    <span style={{ marginRight: "8px" }}>
+      <img
+        src={code === "wo" ? worldFlagImage : `https://flagcdn.com/${code.toLowerCase()}.svg`}
+        alt={code === "wo" ? "World flag" : `${code} flag`}
+        style={{ width: "20px", height: "15px" }}
+      />
+    </span>
+  );
+};
 
-export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
+export default function SimpleDropdown({ selectedValue, handleCountryChange, setSelectedValue }) {
   const [countries, setCountries] = useState([]);
   const [userCountry, setUserCountry] = useState("");
   const [userCountryCode, setUserCountryCode] = useState("");
@@ -23,7 +28,9 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
         if (!response.ok) throw new Error("Failed to fetch user country");
         const data = await response.json();
         setUserCountry(data.country_name);
-        setUserCountryCode(data.country); // Get country code from the response
+        setUserCountryCode(data.country);
+        setSelectedValue("wo");
+        console.log("selectedValue", selectedValue)
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +51,6 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
 
   return (
     <FormControl
-      fullWidth
       variant="outlined"
       sx={{ marginBottom: "2rem", width: "15rem", borderRadius: "8px",
       "& .MuiOutlinedInput-root": {
@@ -60,10 +66,8 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
       },
     }}
     >
-      <InputLabel id="country-dropdown-label" className="font-bold font-mono text-indigo-300 text-sm">Select Country</InputLabel>
+      <InputLabel className="font-bold font-mono text-indigo-300 text-sm">Select Country</InputLabel>
       <Select
-        labelId="country-dropdown-label"
-        id="country-dropdown"
         value={selectedValue}
         onChange={handleCountryChange}
         label="Select Country"
@@ -74,9 +78,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
           },
         }}
       >
-        <MenuItem value="Global">
-          <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-base">Global</Typography>
-        </MenuItem>
+
         {userCountry && userCountryCode && (
           <MenuItem value={userCountryCode}>
             <Box display="flex" alignItems="center">
@@ -89,7 +91,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
           <MenuItem key={index} value={country.code}>
             <Box display="flex" alignItems="center">
               <FlagIcon code={country.code} />
-              <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-sm">{country.name}</Typography>
+              <Typography className="font-bold font-mono text-indigo-300 text-sm">{country.name}</Typography>
             </Box>
           </MenuItem>
         ))}
