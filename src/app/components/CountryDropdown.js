@@ -32,6 +32,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
         setUserCountry(data.country_name);
         setUserCountryCode(data.country);
         console.log("selectedValue", selectedValue)
+        setSelectedValue("wo")
       } catch (error) {
         console.log(error);
       }
@@ -82,9 +83,12 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
       >
 
         {/* World Option as the First Menu Item */}
-        <MenuItem value="Global">
-          <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-base">Global</Typography>
-        </MenuItem>
+        <MenuItem value="wo">
+            <Box display="flex" alignItems="center">
+              <FlagIcon code={"wo"} />
+              <Typography variant="body1"  className="font-bold font-mono text-indigo-300 text-sm">World</Typography>
+            </Box>
+          </MenuItem>
         
          {/* User country as Option as the second Menu Item */}
         {userCountry && userCountryCode && (
