@@ -20,7 +20,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
         console.log("showing the data out")
         console.log(data)
         setStatus(data.status); 
-        if (data.status === "success") {
+        if (data.status === "success" && data.totalResults >= 1) {
           setArticles(data.results); 
         } else {
           throw new Error("No News Found bro");
