@@ -38,11 +38,6 @@ export default function Page() {
           flexDirection: "row",
         }}
       >
-        <CountryDropdown
-          selectedValue={selectedValue}
-          handleCountryChange={handleCountryChange}
-          setSelectedValue={setSelectedValue}
-        />
         <CategoryDropdown
           selectedCategory={selectedCategory}
           handleCategoryChange={handleCategoryChange}
