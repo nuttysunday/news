@@ -29,7 +29,6 @@ export default function Page() {
   return (
     <Box  sx={{
        marginTop:'2rem',
-       marginLeft: '1rem'
     }}>
       <Box
         sx={{

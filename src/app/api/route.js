@@ -23,5 +23,5 @@ export async function GET(req) {
   
   const data = await response.json();
   
-  return Response.json({ data })
+  return Response.json(data)
 }

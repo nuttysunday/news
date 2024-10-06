@@ -17,11 +17,18 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setStatus(data.data.status); // Track status from API response
-        if (data.data.status === "success") {
-          setArticles(data.data.results); // Adjust based on the structure of your API response
+        console.log(data)
+        console.log(data.totalResults)
+        console.log(typeof data.totalResults);
+
+        setStatus(data.status); 
+        console.log("Outside loop")
+        if (data.status === "success" && data.totalResults >= 1) {
+          console.log("Got in here")
+          setArticles(data.results); 
         } else {
-          throw new Error("Failed to fetch articles. Status: " + data.status);
+          console.log("Inside loop")
+          throw new Error("No News Found bro");
         }
       } catch (err) {
         setError(err);
