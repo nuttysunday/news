@@ -1,7 +1,10 @@
+"use client";
+
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import languagesData from './languages.json'; // Assuming your languages JSON file is named languages.json
 
+ // className="font-bold font-mono text-indigo-300 text-sm"}
 const LanguageDropdown = ({ selectedLanguage, handleLanguageChange }) => {
   return (
     <FormControl 
@@ -9,7 +12,7 @@ const LanguageDropdown = ({ selectedLanguage, handleLanguageChange }) => {
       variant="outlined" 
       sx={{ 
         marginBottom: "2rem", 
-        width: "10rem", 
+        width: { xs: "100%", sm: "10rem" },
         borderRadius: "8px",
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
@@ -29,12 +32,19 @@ const LanguageDropdown = ({ selectedLanguage, handleLanguageChange }) => {
         },
       }}
     >
-      <InputLabel id="language-dropdown-label" className="font-bold font-mono text-indigo-300 text-sm">
+      
+      <InputLabel
+        sx={{
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          color: "#a5b4fc",
+          fontSize: "0.875rem",
+        }}
+      >
         Select Language
       </InputLabel>
       <Select
         labelId="language-dropdown-label"
-        id="language-dropdown"
         value={selectedLanguage} 
         onChange={handleLanguageChange}
         label="Select Language"

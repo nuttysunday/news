@@ -33,12 +33,12 @@ export default function Page() {
         marginTop: "2rem",
       }}
     >
-      <Box sx={{display:'flex', justifyContent:'space-between'}}> 
+      <Box sx={{display:'flex', justifyContent:'space-between', flexDirection: { xs: 'column', sm: 'row' },}}> 
         <Box
           sx={{
             gap: "2rem",
             display: "flex",
-            flexDirection: "row",
+            flexDirection: { xs: 'column', sm: 'row' },
           }}
         >
           <CountryDropdown
