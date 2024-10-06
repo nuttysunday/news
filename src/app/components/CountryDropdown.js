@@ -46,9 +46,21 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
     <FormControl
       fullWidth
       variant="outlined"
-      sx={{ marginBottom: "2rem", width: "15rem", borderRadius: "8px" }}
+      sx={{ marginBottom: "2rem", width: "15rem", borderRadius: "8px",
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "#a5b4fc", 
+        },
+        "&:hover fieldset": {
+          borderColor: "white", 
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "white",
+        },
+      },
+    }}
     >
-      <InputLabel id="country-dropdown-label">Select Country</InputLabel>
+      <InputLabel id="country-dropdown-label" className="font-bold font-mono text-indigo-300 text-sm">Select Country</InputLabel>
       <Select
         labelId="country-dropdown-label"
         id="country-dropdown"
@@ -63,13 +75,13 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
         }}
       >
         <MenuItem value="Global">
-          <Typography variant="body1">Global</Typography>
+          <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-base">Global</Typography>
         </MenuItem>
         {userCountry && userCountryCode && (
           <MenuItem value={userCountryCode}>
             <Box display="flex" alignItems="center">
               <FlagIcon code={userCountryCode} />
-              <Typography variant="body1">{userCountry}</Typography>
+              <Typography variant="body1"  className="font-bold font-mono text-indigo-300 text-sm">{userCountry}</Typography>
             </Box>
           </MenuItem>
         )}
@@ -77,7 +89,7 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange }) {
           <MenuItem key={index} value={country.code}>
             <Box display="flex" alignItems="center">
               <FlagIcon code={country.code} />
-              <Typography variant="body1">{country.name}</Typography>
+              <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-sm">{country.name}</Typography>
             </Box>
           </MenuItem>
         ))}
