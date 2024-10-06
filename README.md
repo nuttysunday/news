@@ -10,7 +10,7 @@ Minimalistic News was created to provide a quick and straightforward way to acce
 
 - **Quick Access**: Get the latest news headlines at a glance.
 - **Filtering Options**: Easily filter news by country, category, and language.
-- **Caching**: Leverages Next.js caching to minimize requests to the Newsdata.io API, which is especially beneficial given the limited number of requests allowed on the free tier. The cache is cleared every 2 hours to ensure you receive up-to-date information. 
+- **Caching**: Leverages Next.js caching to minimize requests to the Newsdata.io API, which is especially beneficial given the limited number of requests allowed on the free tier. The cache is cleared every 12 hours to ensure you receive up-to-date information. 
 - **Server-Side Rendering (SSR)**: Utilizes Next.js's SSR capabilities to improve user experience by loading news with default filters directly from the server.
 
 
