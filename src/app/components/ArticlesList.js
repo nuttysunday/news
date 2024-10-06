@@ -17,17 +17,11 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data)
-        console.log(data.totalResults)
-        console.log(typeof data.totalResults);
 
         setStatus(data.status); 
-        console.log("Outside loop")
         if (data.status === "success" && data.totalResults >= 1) {
-          console.log("Got in here")
           setArticles(data.results); 
         } else {
-          console.log("Inside loop")
           throw new Error("No News Found bro");
         }
       } catch (err) {

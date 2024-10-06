@@ -36,7 +36,7 @@ export default function Page() {
       <Box sx={{display:'flex', justifyContent:'space-between', flexDirection: { xs: 'column', sm: 'row' },}}> 
         <Box
           sx={{
-            gap: "2rem",
+            gap: { xs: "1rem", sm: "2rem" },
             display: "flex",
             flexDirection: { xs: 'column', sm: 'row' },
           }}
@@ -55,7 +55,9 @@ export default function Page() {
             handleLanguageChange={handleLanguageChange}
           />
         </Box>
-        <Footer />
+        <Footer sx={{
+            marginBottom : { xs: "1rem" },
+          }}/>
       </Box>
       <ArticlesList
         selectedValue={selectedValue}
