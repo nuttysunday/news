@@ -82,11 +82,8 @@ export default function SimpleDropdown({ selectedValue, handleCountryChange, set
       >
 
         {/* World Option as the First Menu Item */}
-        <MenuItem value="wo">
-          <Box display="flex" alignItems="center">
-            <FlagIcon code="wo" />
-            <Typography className="font-bold font-mono text-indigo-300 text-sm">World</Typography>
-          </Box>
+        <MenuItem value="Global">
+          <Typography variant="body1" className="font-bold font-mono text-indigo-300 text-base">Global</Typography>
         </MenuItem>
         
          {/* User country as Option as the second Menu Item */}

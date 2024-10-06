@@ -10,7 +10,7 @@ import ArticlesList from "./components/ArticlesList";
 
 export default function Page() {
   // default values
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("Global");
   const [selectedCategory, setSelectedCategory] = useState("top");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); 
 
