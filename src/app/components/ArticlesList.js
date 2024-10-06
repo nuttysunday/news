@@ -17,7 +17,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-
+        console.log(data)
         setStatus(data.status); 
         if (data.status === "success") {
           setArticles(data.results); 
