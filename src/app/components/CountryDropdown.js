@@ -70,9 +70,7 @@ export default function SimpleDropdown({
 
   return (
     <FormControl
-      variant="outlined"
       sx={{
-        marginBottom: "2rem",
         width: { xs: "100%", sm: "15rem" },
         borderRadius: "8px",
         "& .MuiOutlinedInput-root": {

@@ -6,10 +6,7 @@ import languagesData from './languages.json'; // Assuming your languages JSON fi
 const LanguageDropdown = ({ selectedLanguage, handleLanguageChange }) => {
   return (
     <FormControl 
-      fullWidth 
-      variant="outlined" 
-      sx={{ 
-        marginBottom: "2rem", 
+      sx={{  
         width: { xs: "100%", sm: "10rem" },
         borderRadius: "8px",
         "& .MuiOutlinedInput-root": {

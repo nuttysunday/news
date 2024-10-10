@@ -1,39 +1,32 @@
+// This is a server side comp
+
 import React from "react";
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Typography } from "@mui/material";
 import categoriesData from "./categories.json";
 
 const CategoryDropdown = ({ selectedCategory, handleCategoryChange }) => {
   return (
     <FormControl
-      fullWidth
-      variant="outlined"
-      sx={{
-        marginBottom: "2rem",
-        width: { xs: "100%", sm: "10rem" },
-        borderRadius: "8px",
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "#a5b4fc",
-          },
-          "&:hover fieldset": {
-            borderColor: "white",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "white",
-          },
-          "& .MuiSelect-select": {
-            fontFamily: "monospace",
-            color: "#a5b4fc",
-            fontWeight: "bold",
-          },
+    sx={{  
+      width: { xs: "100%", sm: "10rem" },
+      borderRadius: "8px",
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "#a5b4fc", 
         },
-      }}
+        "&:hover fieldset": {
+          borderColor: "white", 
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "white",
+        },
+        "& .MuiSelect-select": {
+          fontFamily: "monospace", 
+          color: "#a5b4fc", 
+          fontWeight: "bold",
+        },
+      },
+    }}
     >
       <InputLabel
         sx={{
@@ -47,8 +40,6 @@ const CategoryDropdown = ({ selectedCategory, handleCategoryChange }) => {
         Select Category
       </InputLabel>
       <Select
-        labelId="category-dropdown-label"
-        id="category-dropdown"
         value={selectedCategory}
         onChange={handleCategoryChange}
         label="Select Category"
