@@ -9,7 +9,9 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import countriesData from "./countries.json";
+import countriesData from "@/app/Data/countries.json";
+import { dropDownInputLabelStyle, menuPropsStyles} from "@/app/styles/sharedStyles";
+
 
 const FlagIcon = ({ code }) => {
   const worldFlagImage =
@@ -87,12 +89,7 @@ export default function SimpleDropdown({
       }}
     >
       <InputLabel
-        sx={{
-          fontWeight: "bold",
-          fontFamily: "monospace",
-          color: "#a5b4fc",
-          fontSize: "0.875rem",
-        }}
+        sx={dropDownInputLabelStyle}
       >
         Select Country
       </InputLabel>
@@ -100,13 +97,7 @@ export default function SimpleDropdown({
         value={selectedValue}
         onChange={handleCountryChange}
         label="Select Country"
-        MenuProps={{ autoFocus: false }}
-        sx={{
-          "& .MuiSelect-select": {
-            display: "flex",
-            alignItems: "center",
-          },
-        }}
+        MenuProps={{ ...menuPropsStyles, autoFocus: false }}
       >
         {/* World Option as the First Menu Item */}
         <MenuItem value="wo">
