@@ -44,6 +44,15 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     }
   }
 
+  if (status !== "success") {
+    // Show a message if the status is not "success"
+    return (
+      <div className="text-yellow-500">
+        Unable to fetch articles. Please try again later.
+      </div>
+    );
+  }
+
   return (
     <div>
       {articles.map((article) => (
@@ -54,6 +63,14 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
                 {article.title}
               </h2>
               <p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-pink-400 text-sm"
+                >
+                  Read more
+                </a>
                 <a
                   href={article.link}
                   target="_blank"
