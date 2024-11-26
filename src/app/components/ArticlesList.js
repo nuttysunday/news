@@ -23,7 +23,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       console.log(data);
 
       if (data.results.length === 0) {
-        setMessage("No News Found bro");
+        setMessage("No News Found");
       } else if (data.status === "success") {
         setArticles(data.results);
       } else {
@@ -66,14 +66,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
                 >
                   Read more
                 </a>
-                <a
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-pink-400 text-sm"
-                >
-                  Read more
-                </a>
+               
               </p>
             </div>
             <img
