@@ -12,13 +12,17 @@ export async function GET(req) {
 
   if (country && country !== 'Global') {
    url += `&country=${country}`;
-   console.log(url)
   }
  
-  // Revalidate information every two hours
+  // Revalidate information every four hours
   const response = await fetch(url, { next: { revalidate: 43200 } });
   
   const data = await response.json();
   console.log(data)
-  return Response.json(data)
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      "Cache-Control": "public, s-maxage=14400, stale-while-revalidate=7200",
+    },
+  });
 }

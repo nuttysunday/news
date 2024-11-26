@@ -9,9 +9,14 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     const fetchArticles = async () => {
       setLoading(true);
       setArticles([]);
+      setMessage(null);
+      
       const response = await fetch(
         `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
-      );
+        , {
+          cache: 'no-store', // Always fetch fresh from the server (cached at the API layer)
+        });
+
 
       const data = await response.json();
       console.log("showing the data out");
@@ -42,16 +47,6 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       // Show a message if the status is not "success"
       return <div className="font-bold font-mono text-yellow-500">{message}</div>;
     }
-  }
-
-  if (status !== "success") {
-    // Show a message if the status is not "success"
-    return (
-      <div className="text-yellow-500">
-        Unable to fetch articles. Please try again later.
-      </div>
-    );
-  }
 
   return (
     <div>
