@@ -17,6 +17,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
           cache: 'no-store', // Always fetch fresh from the server (cached at the API layer)
         });
 
+
       const data = await response.json();
       console.log("showing the data out");
       console.log(data);
@@ -46,7 +47,6 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       // Show a message if the status is not "success"
       return <div className="font-bold font-mono text-yellow-500">{message}</div>;
     }
-  }
 
   return (
     <div>
@@ -58,6 +58,14 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
                 {article.title}
               </h2>
               <p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-pink-400 text-sm"
+                >
+                  Read more
+                </a>
                 <a
                   href={article.link}
                   target="_blank"
