@@ -14,7 +14,7 @@ export async function GET(req) {
    url += `&country=${country}`;
   }
  
-  // Revalidate information every two hours
+  // Revalidate information every four hours
   const response = await fetch(url, { next: { revalidate: 43200 } });
   
   const data = await response.json();
