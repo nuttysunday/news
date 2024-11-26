@@ -34,7 +34,7 @@ Explore my other projects at: [https://shivam.foo/](https://shivam.foo/)
 | **Project hosted**       | [news.shivam.foo](https://news.shivam.foo/)                                                             |
 | **GitHub Repository**    | [Minimilstic news](https://github.com/nuttysunday/news)                                       |
 | **Website**              | [shivam.foo](https://shivam.foo/)                                                                       |
-| **Blog**                 | [Next.js appreciation Blog](https://shivam.foo/blogs/nextjs-just-blew-my-minds)                                       |
+| **Blog**                 | [Next.js appreciation Blog](https://shivam.foo/blogs/nextjs-just-blew-my-mind)                                       |
 | **GitHub Profile**       | [nuttysunday](https://github.com/nuttysunday)                                                           |
 | **Twitter Profile**      | [Sundaycide](https://x.com/sundaycide)                                                                  |
 | **Resume**               | [View Resume](https://drive.google.com/file/d/1OC_mcMHkBaDhWbKEMfsnLY-uBS8Xee7G/view)                   |
