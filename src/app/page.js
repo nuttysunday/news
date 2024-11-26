@@ -39,6 +39,7 @@ export default function Page() {
             gap: { xs: "1rem", sm: "2rem" },
             display: "flex",
             flexDirection: { xs: 'column', sm: 'row' },
+            marginBottom: '2rem'
           }}
         >
           <CountryDropdown

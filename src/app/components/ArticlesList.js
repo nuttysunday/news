@@ -3,34 +3,28 @@ import React, { useEffect, useState } from "react";
 const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [status, setStatus] = useState(null); // Track the API response status
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      try {
-        setLoading(true);
-        setArticles([]); 
-        const response = await fetch(
-          `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        console.log("showing the data out")
-        console.log(data)
-        setStatus(data.status); 
-        if (data.status === "success") {
-          setArticles(data.results); 
-        } else {
-          throw new Error("No News Found bro");
-        }
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
+      setLoading(true);
+      setArticles([]);
+      const response = await fetch(
+        `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
+      );
+
+      const data = await response.json();
+      console.log("showing the data out");
+      console.log(data);
+
+      if (data.results.length === 0) {
+        setMessage("No News Found bro");
+      } else if (data.status === "success") {
+        setArticles(data.results);
+      } else {
+        setMessage("Cannot connect to News API");
       }
+      setLoading(false);
     };
 
     fetchArticles();
@@ -43,20 +37,11 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       </div>
     ); // Tailwind loading spinner
 
-  if (error)
-    return (
-      <div className="text-red-500">
-        Failed to load articles: {error.message}
-      </div>
-    );
-
-  if (status !== "success") {
-    // Show a message if the status is not "success"
-    return (
-      <div className="text-yellow-500">
-        Unable to fetch articles. Please try again later.
-      </div>
-    );
+  if (message !== null) {
+    {
+      // Show a message if the status is not "success"
+      return <div className="font-bold font-mono text-yellow-500">{message}</div>;
+    }
   }
 
   return (

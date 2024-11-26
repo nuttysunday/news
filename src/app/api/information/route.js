@@ -19,6 +19,6 @@ export async function GET(req) {
   const response = await fetch(url, { next: { revalidate: 43200 } });
   
   const data = await response.json();
-  
+  console.log(data)
   return Response.json(data)
 }
