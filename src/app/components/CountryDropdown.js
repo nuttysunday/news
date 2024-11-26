@@ -10,7 +10,7 @@ import {
   Box,
 } from "@mui/material";
 import countriesData from "@/app/Data/countries.json";
-import { dropDownInputLabelStyle, menuPropsStyles} from "@/app/styles/sharedStyles";
+import { dropdownStyle, dropDownInputLabelStyle, menuPropsStyles} from "@/app/styles/sharedStyles";
 
 
 const FlagIcon = ({ code }) => {
@@ -72,21 +72,7 @@ export default function SimpleDropdown({
 
   return (
     <FormControl
-      sx={{
-        width: { xs: "100%", sm: "15rem" },
-        borderRadius: "8px",
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "#a5b4fc",
-          },
-          "&:hover fieldset": {
-            borderColor: "white",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "white",
-          },
-        },
-      }}
+    sx={dropdownStyle}
     >
       <InputLabel
         sx={dropDownInputLabelStyle}
@@ -105,7 +91,7 @@ export default function SimpleDropdown({
             <FlagIcon code={"wo"} />
             <Typography
               variant="body1"
-              className="font-bold font-mono text-indigo-300 text-sm"
+              sx={dropDownInputLabelStyle}
             >
               World
             </Typography>
@@ -119,7 +105,7 @@ export default function SimpleDropdown({
               <FlagIcon code={userCountryCode} />
               <Typography
                 variant="body1"
-                className="font-bold font-mono text-indigo-300 text-sm"
+                sx={dropDownInputLabelStyle}
               >
                 {userCountry}
               </Typography>
@@ -130,7 +116,7 @@ export default function SimpleDropdown({
           <MenuItem key={index} value={country.code}>
             <Box display="flex" alignItems="center">
               <FlagIcon code={country.code} />
-              <Typography className="font-bold font-mono text-indigo-300 text-sm">
+              <Typography  sx={dropDownInputLabelStyle}>
                 {country.name}
               </Typography>
             </Box>
