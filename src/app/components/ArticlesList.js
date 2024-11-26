@@ -9,9 +9,13 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
     const fetchArticles = async () => {
       setLoading(true);
       setArticles([]);
+      setMessage(null);
+      
       const response = await fetch(
         `/api/information?country=${selectedValue}&category=${selectedCategory}&lang=${selectedLanguage}`
-      );
+        , {
+          cache: 'no-store', // Always fetch fresh from the server (cached at the API layer)
+        });
 
       const data = await response.json();
       console.log("showing the data out");
