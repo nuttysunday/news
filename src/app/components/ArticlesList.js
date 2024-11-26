@@ -47,7 +47,7 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
       // Show a message if the status is not "success"
       return <div className="font-bold font-mono text-yellow-500">{message}</div>;
     }
-
+  }
   return (
     <div>
       {articles.map((article) => (
@@ -92,3 +92,4 @@ const NewsDisplay = ({ selectedValue, selectedCategory, selectedLanguage }) => {
 };
 
 export default NewsDisplay;
+ 
